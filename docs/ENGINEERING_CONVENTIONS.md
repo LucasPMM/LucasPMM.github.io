@@ -187,14 +187,17 @@ Additional rules:
 
 ## Continuous integration and deployment
 
-- Pull requests and pushes to `main` run type checking, Biome, convention
-  checks, unit tests, responsive browser tests, and a production build.
-- Deployment to GitHub Pages may start only after all quality checks succeed.
+- Pull requests and pushes to `main` or `master` run type checking, Biome,
+  convention checks, unit tests, responsive browser tests, and a production
+  build.
+- Deployment to GitHub Pages starts only after the `CI` workflow succeeds for a
+  trusted push to `main` or `master`.
 - Vite outputs static files to `dist`; GitHub Actions publishes that artifact.
-- Use `base: '/'` for the recommended `LucasPMM.github.io` repository name, or
-  `base: '/<repository-name>/'` for a project site.
+- Use `base: '/'` for the selected `LucasPMM.github.io` repository name.
 - Keep the workflow permissions minimal: repository contents read, Pages write,
   and ID token write for the deploy job.
+- Reference maintained GitHub Actions by their stable major release tag so
+  compatible fixes are adopted without obscuring the workflow.
 
 ## Documentation synchronization
 

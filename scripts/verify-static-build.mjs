@@ -13,6 +13,7 @@ const requiredIndexFragments = [
   'Role Vectors',
   'Planner',
   'rel="canonical"',
+  'href="/favicon.svg"',
 ]
 const missingIndexFragments = requiredIndexFragments.filter(
   (fragment) => !indexHtml.includes(fragment),
@@ -28,6 +29,10 @@ if (!robots.includes('Sitemap: https://lucaspmm.github.io/sitemap.xml')) {
 
 if (!sitemap.includes('<loc>https://lucaspmm.github.io/</loc>')) {
   throw new Error('sitemap.xml does not contain the canonical portfolio URL.')
+}
+
+if (indexHtml.includes('/Curriculum/')) {
+  throw new Error('The production build still contains the legacy project-site base path.')
 }
 
 console.log('Static build verification passed.')

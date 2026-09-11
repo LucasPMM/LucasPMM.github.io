@@ -4,6 +4,8 @@ A small, static personal portfolio for GitHub Pages. It presents Lucas Mariz's
 professional experience, academic path, selected production work, research, and
 projects in English, Brazilian Portuguese, and French.
 
+Target production URL: [https://lucaspmm.github.io/](https://lucaspmm.github.io/)
+
 The curated showcase includes Jig Solver, the private Planner financial
 assistant, Simplex, Pokémon Base, Greedy K-means, and LZ78 Compression. Private
 projects are described without exposing source or application links.
@@ -60,12 +62,35 @@ pnpm build
 pnpm preview
 ```
 
-The build output is written to `dist/`. Set `VITE_BASE_PATH` when publishing as
-a GitHub Pages project site. The recommended repository name is
-`LucasPMM.github.io`, which uses the default `/` base path.
+The build output is written to `dist/`. This repository targets the
+`LucasPMM.github.io` GitHub Pages user site and therefore uses `/` as its Vite
+base path.
 
 The production check also verifies canonical metadata, the sitemap,
 `robots.txt`, and representative prerendered content.
+
+## GitHub Pages activation
+
+The deployment workflow runs only after the `CI` workflow succeeds for a push
+to `master` or `main`. It rebuilds the exact verified revision and publishes
+only `dist/`.
+
+To activate the final site:
+
+1. Rename `LucasPMM/Curriculum` to `LucasPMM/LucasPMM.github.io` under
+   **Settings → General**.
+2. Under **Settings → Pages**, change the publishing source from the legacy
+   branch configuration to **GitHub Actions**.
+3. Update the local remote:
+
+   ```bash
+   git remote set-url origin git@github.com:LucasPMM/LucasPMM.github.io.git
+   ```
+
+4. Merge the modernization branch into the default branch. A successful CI run
+   will trigger the deployment workflow automatically.
+5. Set the repository description, Website field, GitHub profile Website, and
+   LinkedIn link to `https://lucaspmm.github.io/`.
 
 ## Content and implementation rules
 

@@ -712,38 +712,37 @@ Completion evidence on September 11, 2026:
 - Lighthouse mobile scores: Performance 98, Accessibility 100, Best Practices
   100, and SEO 100. Desktop scores 100 in all four categories.
 
-### Phase 6 — rename and deploy (P0, half day)
+### Phase 6 — rename and deploy (P0) — implementation complete, activation pending
 
-- Rename the repository and update the local remote.
-- Configure the correct Vite base path.
-- Enable GitHub Pages through GitHub Actions.
-- Update README, repository description/topics, canonical URL, and profile
-  links.
-- Smoke-test the public site and retain Git-history rollback.
+- The Vite base path, canonical URL, Open Graph URL, sitemap, and `robots.txt`
+  target `https://lucaspmm.github.io/`.
+- A least-privilege GitHub Pages workflow publishes only after `CI` succeeds
+  for a trusted push to `main` or `master`.
+- GitHub Actions use stable major release tags, and the deployment rebuilds the
+  exact portfolio revision accepted by CI.
+- README and this runbook document the rename, Pages-source migration, remote
+  update, metadata update, and public smoke test.
+- Lucas still needs to rename the repository, switch Pages from the current
+  legacy branch source to GitHub Actions, merge the branch, and update external
+  profile links.
 
 **Exit:** the renamed site is live and all public links use the new URL.
 
-**Estimated total:** approximately 5–7 focused days, including content,
-implementation, review, and deployment.
+**Current state:** every repository-side prerequisite is implemented. The exit
+condition remains pending until the external activation checklist in section 14
+is completed and the public URL passes its smoke test.
 
-## 13. Repository name recommendation
+## 13. Selected repository name
 
-### Recommended: `LucasPMM.github.io`
+### `LucasPMM.github.io`
 
 This makes the repository the GitHub Pages user site and produces the clean URL
 `https://lucaspmm.github.io/`. It also allows Vite `base: '/'`. The technical
 repository name does not change the public title “Lucas Mariz.”
 
-Alternatives for a project site:
-
-1. `lucas-mariz` — personal and memorable; URL `/lucas-mariz/`.
-2. `portfolio` — short and conventional; URL `/portfolio/`.
-3. `portfolio-cv` — explicitly combines projects and résumé content.
-4. `lucas-mariz.dev` — brandable, but resembles a domain that is not the Pages
-   URL unless a real domain is configured.
-
-Avoid `Curriculum`: in English it usually means a course/program syllabus;
-`portfolio`, `résumé`, or `CV` communicates the product more clearly.
+The name is available as of September 11, 2026. The existing `Curriculum`
+repository is public, uses `master` as its default branch, and currently serves
+Pages from the repository root in legacy branch mode.
 
 ## 14. Safe rename tutorial
 
@@ -752,17 +751,18 @@ local default branch is `master`.
 
 ### A. Prepare
 
-1. Ensure the new build is versioned and no local work is forgotten.
-2. Record the old URL `https://lucaspmm.github.io/Curriculum/`. GitHub does not
+1. Review and explicitly authorize the phase 6 implementation commit.
+2. Ensure the new build is versioned and no local work is forgotten.
+3. Record the old URL `https://lucaspmm.github.io/Curriculum/`. GitHub does not
    automatically redirect project-site URLs when a repository is renamed.
-3. If preserving the old URL is critical, configure a custom domain before the
+4. If preserving the old URL is critical, configure a custom domain before the
    rename. Otherwise, plan to update every public link.
 
 ### B. Rename on GitHub
 
 1. Open `LucasPMM/Curriculum`.
 2. Go to **Settings → General**.
-3. Set **Repository name** to `LucasPMM.github.io`, or the selected alternative.
+3. Set **Repository name** to `LucasPMM.github.io`.
 4. Confirm **Rename**.
 
 GitHub redirects repository web traffic and Git operations, but the Pages URL
@@ -770,37 +770,45 @@ is the important exception.
 
 ### C. Update the local clone
 
-For the recommended name:
+For the selected name:
 
 ```bash
 git remote set-url origin git@github.com:LucasPMM/LucasPMM.github.io.git
 git remote -v
 ```
 
-Optionally standardize the primary branch:
+The deployment workflow supports the current `master` branch as well as `main`.
+Optionally standardize the primary branch later:
 
 ```bash
 git branch -m master main
 git push -u origin main
 ```
 
-After the push, change the default branch to `main` under
-**Settings → Branches**. Remove the old remote branch only after `main`, CI, and
-Pages are verified.
+After the push, change the default branch to `main` under **Settings →
+Branches**. Treat this as an independent migration and remove the old remote
+branch only after `main`, CI, and Pages are verified.
 
 ### D. Configure Pages
 
-- For `LucasPMM.github.io`, use `base: '/'` in Vite.
-- For `portfolio`, use `base: '/portfolio/'`.
-- Under **Settings → Pages → Build and deployment**, choose
-  **GitHub Actions**.
-- Add `.github/workflows/deploy.yml` to install with pnpm, run `pnpm check`,
-  build, and publish `dist`.
-- Update the README URL and GitHub profile Website field.
+1. Under **Settings → Pages → Build and deployment**, change **Source** from
+   the current legacy branch configuration to **GitHub Actions**.
+2. Merge `feat/portfolio-modernization` into the default branch. The `CI`
+   workflow will validate the merge, and its successful push run will trigger
+   `.github/workflows/deploy.yml`.
+3. Confirm that the deployment environment is named `github-pages` and that
+   its branch protection permits only the default branch.
+4. In the repository **About** settings, use:
+   - description:
+     `Senior software engineer portfolio, selected work, and applied research.`
+   - website: `https://lucaspmm.github.io/`
+   - topics: `portfolio`, `preact`, `typescript`, `vite`, `github-pages`.
+5. Set the GitHub profile Website and the relevant LinkedIn link to
+   `https://lucaspmm.github.io/`.
 
 ### E. Verify
 
-1. Confirm CI and deployment are green in GitHub Actions.
+1. Confirm the `CI` and `Deploy to GitHub Pages` workflows are green.
 2. Open the public URL in a private browser window.
 3. Verify direct loading, assets, anchor navigation, avatar fallback, external
    links, locale, theme, and mobile layout.
@@ -814,8 +822,8 @@ Pages are verified.
 - Career and education dates match section 3, with expected graduation in 2027.
 - ABILITYA and Pluritech descriptions are accurate and contain no invented
   metrics.
-- The showcase order is Jig Solver, Simplex, Pokémon Base, Greedy K-means, and
-  LZ78 Compression.
+- The showcase order is Jig Solver, Planner, Simplex, Pokémon Base, Greedy
+  K-means, and LZ78 Compression.
 - Jig Solver links only to the public application and uses a real optimized
   screenshot.
 - The profile image comes from GitHub and has a local fallback.
@@ -830,7 +838,9 @@ Pages are verified.
 - Commit messages are English Conventional Commits, hooks are not bypassed, and
   coding agents do not commit without explicit authorization.
 - GitHub Actions deploys only after all quality checks pass.
-- README, canonical, Open Graph, GitHub profile, and LinkedIn use the final URL.
+- README, canonical, Open Graph, and static discovery files use the final URL.
+- After activation, the repository metadata, GitHub profile, and LinkedIn use
+  the final URL.
 
 ## Technical references
 
