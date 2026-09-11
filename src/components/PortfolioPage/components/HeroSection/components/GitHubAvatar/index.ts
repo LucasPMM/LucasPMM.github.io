@@ -1,0 +1,1 @@
+export { GitHubAvatar } from './GitHubAvatar'

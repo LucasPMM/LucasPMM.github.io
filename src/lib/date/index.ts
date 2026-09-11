@@ -1,0 +1,1 @@
+export { formatExperiencePeriod } from './formatExperiencePeriod'
