@@ -1,0 +1,48 @@
+{
+  "name": "lucas-mariz-portfolio",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.33.4",
+  "engines": {
+    "node": ">=24 <25",
+    "pnpm": ">=10 <11"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "preinstall": "node scripts/require-pnpm.mjs",
+    "lint": "pnpm lint:biome && pnpm lint:conventions",
+    "lint:biome": "biome lint .",
+    "lint:conventions": "node scripts/check-code-conventions.mjs",
+    "format": "biome check --write .",
+    "format:check": "biome format .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "check": "pnpm typecheck && pnpm lint && pnpm test && pnpm format:check && pnpm build"
+  },
+  "dependencies": {
+    "@fontsource/lora": "^5.2.6",
+    "@fontsource/public-sans": "^5.2.6",
+    "i18next": "^25.5.2",
+    "preact": "^10.27.2"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.2.4",
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "@playwright/test": "^1.55.0",
+    "@preact/preset-vite": "^2.10.2",
+    "@testing-library/jest-dom": "6.9.1",
+    "@testing-library/preact": "^3.2.4",
+    "@types/node": "^24.3.1",
+    "@types/babel__core": "^7.20.5",
+    "jsdom": "^26.1.0",
+    "lefthook": "^1.12.3",
+    "typescript": "^5.9.2",
+    "vite": "^7.1.4",
+    "vitest": "^3.2.4"
+  }
+}
