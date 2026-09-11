@@ -4,6 +4,10 @@ A small, static personal portfolio for GitHub Pages. It presents Lucas Mariz's
 professional experience, academic path, selected production work, research, and
 projects in English, Brazilian Portuguese, and French.
 
+The curated showcase includes Jig Solver, the private Planner financial
+assistant, Simplex, Pokémon Base, Greedy K-means, and LZ78 Compression. Private
+projects are described without exposing source or application links.
+
 ## Stack
 
 - Preact, TypeScript, and Vite
@@ -12,6 +16,7 @@ projects in English, Brazilian Portuguese, and French.
 - Biome for linting and formatting
 - Vitest and Testing Library for behavior tests
 - Playwright for responsive browser checks
+- Vite prerendering for useful HTML before client hydration
 - Lefthook and Commitlint for local Git conventions
 
 The site has no backend, CMS, or client-side secret. The profile image loads
@@ -58,6 +63,9 @@ pnpm preview
 The build output is written to `dist/`. Set `VITE_BASE_PATH` when publishing as
 a GitHub Pages project site. The recommended repository name is
 `LucasPMM.github.io`, which uses the default `/` base path.
+
+The production check also verifies canonical metadata, the sitemap,
+`robots.txt`, and representative prerendered content.
 
 ## Content and implementation rules
 

@@ -20,11 +20,19 @@ const updateMetaContent = (selector: string, content: string): void => {
 }
 
 const syncDocumentMetadata = (locale: Locale): void => {
+  const openGraphLocales: Readonly<Record<Locale, string>> = {
+    en: 'en_US',
+    'pt-BR': 'pt_BR',
+    fr: 'fr_FR',
+  }
   document.documentElement.lang = locale
   document.title = translate('metadata.title')
   updateMetaContent('meta[name="description"]', translate('metadata.description'))
   updateMetaContent('meta[property="og:title"]', translate('metadata.title'))
   updateMetaContent('meta[property="og:description"]', translate('metadata.description'))
+  updateMetaContent('meta[property="og:locale"]', openGraphLocales[locale])
+  updateMetaContent('meta[name="twitter:title"]', translate('metadata.title'))
+  updateMetaContent('meta[name="twitter:description"]', translate('metadata.description'))
 }
 
 type I18nProviderProps = {

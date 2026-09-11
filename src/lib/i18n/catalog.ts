@@ -100,24 +100,67 @@ export const en = {
   'projects.title': 'Experiments made tangible.',
   'projects.intro':
     'A curated set of products and academic implementations. Repository cleanup will not change this editorial order.',
+  'projects.detail.approach': 'Approach',
+  'projects.detail.contribution': 'Contribution',
+  'projects.detail.outcome': 'Outcome',
+  'projects.private': 'Private project',
   'projects.jig.status': 'Active project',
   'projects.jig.title': 'Jig Solver',
   'projects.jig.summary':
     'A computer-vision platform that digitizes physical jigsaw pieces, evaluates compatibility, reconstructs the puzzle, and guides physical assembly through a camera-based assistant.',
   'projects.jig.imageAlt': 'Jig Solver workspace showing analyzed puzzle pieces',
+  'projects.jig.approach':
+    'A typed Next.js client coordinates a Python and FastAPI solving engine, OpenCV analysis, persisted placements, and a Three.js workspace.',
+  'projects.jig.contribution':
+    'I designed and implemented the product architecture, puzzle-analysis workflow, reconstruction lifecycle, and camera-guided assembly experience.',
+  'projects.jig.outcome':
+    'The working product analyzes pieces, ranks compatibility, persists solutions, and guides physical assembly with stable camera tracking.',
   'projects.jig.link': 'Open jigsolver.app',
+  'projects.planner.title': 'Planner',
+  'projects.planner.summary':
+    'A private, installable personal-finance dashboard with a secure assistant for understanding expenses, income, cash flow, debts, and purchase plans.',
+  'projects.planner.approach':
+    'A statically exported Next.js application uses Firebase Auth, Firestore, and callable Functions. Deterministic summaries constrain the provider-neutral BYOK assistant.',
+  'projects.planner.contribution':
+    'I built the product end to end, from financial models and responsive workflows to Firestore isolation, encrypted credentials, testing, and delivery automation.',
+  'projects.planner.outcome':
+    'The PWA brings recurring expenses, analytics, reports, financing projections, goals, and read-only AI guidance into one protected workspace.',
   'projects.simplex.title': 'Simplex',
   'projects.simplex.summary':
-    'A Python implementation exploring linear optimization through the Simplex method.',
+    'A command-line linear-programming solver that classifies optimal, infeasible, and unbounded problems.',
+  'projects.simplex.approach':
+    'A two-phase tableau implementation uses an auxiliary problem, Bland’s rule, numerical tolerance, and explicit feasibility or optimality certificates.',
+  'projects.simplex.contribution':
+    'I implemented input parsing, pivoting, basis construction, result serialization, and certificate validation in Python and NumPy.',
+  'projects.simplex.outcome':
+    'A broad fixture corpus covers feasible, infeasible, unbounded, degenerate, and harder linear programs.',
   'projects.pokemon.title': 'Pokémon Base',
   'projects.pokemon.summary':
-    'A TypeScript project for modeling and exploring a structured Pokémon domain.',
+    'A routed Pokédex-style web application for listing, querying, and inspecting Pokémon and their evolutions.',
+  'projects.pokemon.approach':
+    'Angular 7 lazy-loaded feature modules separate list, query, and detail experiences, backed by a typed HTTP service and reusable presentation components.',
+  'projects.pokemon.contribution':
+    'I structured the frontend, data wrapper, routing, filters, charts, detail views, and component tests.',
+  'projects.pokemon.outcome':
+    'The result is a cohesive multi-view exploration interface rather than a single static catalogue.',
   'projects.kmeans.title': 'Greedy K-means',
   'projects.kmeans.summary':
-    'A Python and notebook experiment around greedy initialization for clustering.',
+    'An empirical comparison between a greedy 2-approximation for k-center and classical K-Means clustering.',
+  'projects.kmeans.approach':
+    'The experiment runs both methods across ten datasets and two Minkowski distances, measuring radius, silhouette, adjusted Rand index, and runtime.',
+  'projects.kmeans.contribution':
+    'I implemented the greedy center selection, cluster assignment, evaluation pipeline, notebooks, and reproducible result tables.',
+  'projects.kmeans.outcome':
+    'Per-dataset and aggregate tables make the quality-versus-computational-cost tradeoffs directly inspectable.',
   'projects.lz78.title': 'LZ78 Compression',
   'projects.lz78.summary':
-    'A Python implementation of dictionary-based compression with the LZ78 algorithm.',
+    'A lossless text-compression implementation based on the LZ78 dictionary algorithm.',
+  'projects.lz78.approach':
+    'A compressed trie stores discovered phrases while separate command-line flows encode text to Z78 and reconstruct it back to text.',
+  'projects.lz78.contribution':
+    'I implemented the trie, compression and decompression pipelines, command validation, output handling, and test corpus.',
+  'projects.lz78.outcome':
+    'Ten representative text inputs and an accompanying report document round-trip behavior and implementation choices.',
   'projects.sourceLink': 'View source',
   'capabilities.eyebrow': 'Capabilities',
   'capabilities.title': 'Tools in context, not progress bars.',
@@ -243,24 +286,67 @@ export const ptBR: TranslationCatalog = {
   'projects.title': 'Experimentos que se tornam concretos.',
   'projects.intro':
     'Uma seleção de produtos e implementações acadêmicas. A organização do GitHub não altera esta ordem editorial.',
+  'projects.detail.approach': 'Abordagem',
+  'projects.detail.contribution': 'Contribuição',
+  'projects.detail.outcome': 'Resultado',
+  'projects.private': 'Projeto privado',
   'projects.jig.status': 'Projeto ativo',
   'projects.jig.title': 'Jig Solver',
   'projects.jig.summary':
     'Uma plataforma de visão computacional que digitaliza peças de quebra-cabeça, avalia compatibilidade, reconstrói o puzzle e orienta a montagem física por uma câmera.',
   'projects.jig.imageAlt': 'Área de trabalho do Jig Solver com peças analisadas',
+  'projects.jig.approach':
+    'Um cliente tipado em Next.js coordena um motor de resolução em Python e FastAPI, análise com OpenCV, posições persistidas e uma área de trabalho em Three.js.',
+  'projects.jig.contribution':
+    'Projetei e implementei a arquitetura do produto, o fluxo de análise das peças, o ciclo de reconstrução e a experiência de montagem guiada por câmera.',
+  'projects.jig.outcome':
+    'O produto funcional analisa peças, ordena compatibilidades, persiste soluções e orienta a montagem física com tracking estável pela câmera.',
   'projects.jig.link': 'Abrir jigsolver.app',
+  'projects.planner.title': 'Planner',
+  'projects.planner.summary':
+    'Um painel privado e instalável de finanças pessoais, com um assistente seguro para entender gastos, receitas, fluxo de caixa, dívidas e planos de compra.',
+  'projects.planner.approach':
+    'Uma aplicação Next.js exportada estaticamente usa Firebase Auth, Firestore e Functions chamáveis. Resumos determinísticos limitam o contexto do assistente BYOK independente de provedor.',
+  'projects.planner.contribution':
+    'Construí o produto de ponta a ponta, dos modelos financeiros e fluxos responsivos ao isolamento no Firestore, credenciais criptografadas, testes e automação de entrega.',
+  'projects.planner.outcome':
+    'A PWA reúne gastos recorrentes, análises, relatórios, projeções de financiamentos, metas e orientação por IA somente leitura em um espaço protegido.',
   'projects.simplex.title': 'Simplex',
   'projects.simplex.summary':
-    'Uma implementação em Python que explora otimização linear pelo método Simplex.',
+    'Um resolvedor de programação linear por linha de comando que classifica problemas ótimos, inviáveis e ilimitados.',
+  'projects.simplex.approach':
+    'Uma implementação de tableau em duas fases usa problema auxiliar, regra de Bland, tolerância numérica e certificados explícitos de viabilidade ou otimalidade.',
+  'projects.simplex.contribution':
+    'Implementei parsing de entrada, pivoteamento, construção da base, serialização de resultados e validação de certificados em Python e NumPy.',
+  'projects.simplex.outcome':
+    'Um corpus amplo de fixtures cobre programas lineares viáveis, inviáveis, ilimitados, degenerados e mais difíceis.',
   'projects.pokemon.title': 'Pokémon Base',
   'projects.pokemon.summary':
-    'Um projeto em TypeScript para modelar e explorar um domínio estruturado de Pokémon.',
+    'Uma aplicação web no estilo Pokédex para listar, consultar e inspecionar Pokémon e suas evoluções.',
+  'projects.pokemon.approach':
+    'Módulos de funcionalidades lazy-loaded em Angular 7 separam as experiências de lista, consulta e detalhes, apoiadas por um serviço HTTP tipado e componentes reutilizáveis.',
+  'projects.pokemon.contribution':
+    'Estruturei o frontend, o wrapper de dados, as rotas, os filtros, os gráficos, as telas de detalhes e os testes de componentes.',
+  'projects.pokemon.outcome':
+    'O resultado é uma interface coesa de exploração em múltiplas telas, não apenas um catálogo estático.',
   'projects.kmeans.title': 'Greedy K-means',
   'projects.kmeans.summary':
-    'Um experimento em Python e notebooks sobre inicialização gulosa para agrupamento.',
+    'Uma comparação empírica entre uma aproximação gulosa de fator 2 para k-centros e o agrupamento K-Means clássico.',
+  'projects.kmeans.approach':
+    'O experimento executa os dois métodos em dez datasets e duas distâncias de Minkowski, medindo raio, silhueta, índice Rand ajustado e tempo.',
+  'projects.kmeans.contribution':
+    'Implementei a seleção gulosa de centros, a atribuição de grupos, o pipeline de avaliação, notebooks e tabelas reprodutíveis de resultados.',
+  'projects.kmeans.outcome':
+    'Tabelas por dataset e agregadas tornam diretamente inspecionáveis os compromissos entre qualidade e custo computacional.',
   'projects.lz78.title': 'Compressão LZ78',
   'projects.lz78.summary':
-    'Uma implementação em Python de compressão baseada em dicionário com o algoritmo LZ78.',
+    'Uma implementação de compressão de texto sem perdas baseada no algoritmo de dicionário LZ78.',
+  'projects.lz78.approach':
+    'Uma trie comprimida armazena as frases descobertas enquanto fluxos separados de linha de comando codificam texto para Z78 e o reconstroem.',
+  'projects.lz78.contribution':
+    'Implementei a trie, os pipelines de compressão e descompressão, a validação dos comandos, o tratamento das saídas e o corpus de testes.',
+  'projects.lz78.outcome':
+    'Dez entradas de texto representativas e um relatório documentam o comportamento de ida e volta e as escolhas da implementação.',
   'projects.sourceLink': 'Ver código',
   'capabilities.eyebrow': 'Competências',
   'capabilities.title': 'Ferramentas em contexto, sem barras de progresso.',
@@ -384,24 +470,67 @@ export const fr: TranslationCatalog = {
   'projects.title': 'Des expériences rendues concrètes.',
   'projects.intro':
     'Une sélection de produits et de réalisations universitaires. Le rangement de GitHub ne change pas cet ordre éditorial.',
+  'projects.detail.approach': 'Approche',
+  'projects.detail.contribution': 'Contribution',
+  'projects.detail.outcome': 'Résultat',
+  'projects.private': 'Projet privé',
   'projects.jig.status': 'Projet actif',
   'projects.jig.title': 'Jig Solver',
   'projects.jig.summary':
     'Une plateforme de vision par ordinateur qui numérise les pièces d’un puzzle, évalue leur compatibilité, reconstruit le puzzle et guide l’assemblage physique grâce à une caméra.',
   'projects.jig.imageAlt': 'Espace de travail de Jig Solver avec des pièces analysées',
+  'projects.jig.approach':
+    'Un client Next.js typé coordonne un moteur de résolution Python et FastAPI, l’analyse OpenCV, les placements persistés et un espace de travail Three.js.',
+  'projects.jig.contribution':
+    'J’ai conçu et réalisé l’architecture du produit, le flux d’analyse des pièces, le cycle de reconstruction et l’expérience d’assemblage guidée par caméra.',
+  'projects.jig.outcome':
+    'Le produit opérationnel analyse les pièces, classe leur compatibilité, conserve les solutions et guide l’assemblage physique avec un suivi vidéo stable.',
   'projects.jig.link': 'Ouvrir jigsolver.app',
+  'projects.planner.title': 'Planner',
+  'projects.planner.summary':
+    'Un tableau de bord privé et installable pour les finances personnelles, avec un assistant sécurisé pour comprendre dépenses, revenus, trésorerie, dettes et projets d’achat.',
+  'projects.planner.approach':
+    'Une application Next.js exportée statiquement utilise Firebase Auth, Firestore et des Functions appelables. Des résumés déterministes limitent le contexte de l’assistant BYOK indépendant du fournisseur.',
+  'projects.planner.contribution':
+    'J’ai construit le produit de bout en bout, des modèles financiers et parcours adaptatifs à l’isolation Firestore, au chiffrement des identifiants, aux tests et à l’automatisation des livraisons.',
+  'projects.planner.outcome':
+    'La PWA réunit dépenses récurrentes, analyses, rapports, projections de financement, objectifs et conseils IA en lecture seule dans un espace protégé.',
   'projects.simplex.title': 'Simplex',
   'projects.simplex.summary':
-    'Une implémentation Python qui explore l’optimisation linéaire par la méthode du simplexe.',
+    'Un solveur de programmation linéaire en ligne de commande qui classe les problèmes optimaux, irréalisables et non bornés.',
+  'projects.simplex.approach':
+    'Une implémentation du tableau en deux phases utilise un problème auxiliaire, la règle de Bland, une tolérance numérique et des certificats explicites.',
+  'projects.simplex.contribution':
+    'J’ai implémenté l’analyse des entrées, les pivots, la construction de la base, la sérialisation des résultats et la validation des certificats avec Python et NumPy.',
+  'projects.simplex.outcome':
+    'Un vaste corpus de cas couvre des programmes linéaires réalisables, irréalisables, non bornés, dégénérés et plus difficiles.',
   'projects.pokemon.title': 'Pokémon Base',
   'projects.pokemon.summary':
-    'Un projet TypeScript pour modéliser et explorer un domaine Pokémon structuré.',
+    'Une application web de type Pokédex pour répertorier, interroger et examiner les Pokémon et leurs évolutions.',
+  'projects.pokemon.approach':
+    'Des modules Angular 7 chargés à la demande séparent listes, requêtes et détails, avec un service HTTP typé et des composants de présentation réutilisables.',
+  'projects.pokemon.contribution':
+    'J’ai structuré le frontend, l’accès aux données, le routage, les filtres, les graphiques, les vues détaillées et les tests de composants.',
+  'projects.pokemon.outcome':
+    'Le résultat est une interface cohérente d’exploration à plusieurs vues, plutôt qu’un catalogue statique.',
   'projects.kmeans.title': 'Greedy K-means',
   'projects.kmeans.summary':
-    'Une expérience en Python et notebooks autour de l’initialisation gloutonne du regroupement.',
+    'Une comparaison empirique entre une approximation gloutonne de facteur 2 pour le problème des k-centres et le K-Means classique.',
+  'projects.kmeans.approach':
+    'L’expérience exécute les deux méthodes sur dix jeux de données et deux distances de Minkowski, en mesurant rayon, silhouette, indice de Rand ajusté et temps.',
+  'projects.kmeans.contribution':
+    'J’ai implémenté la sélection gloutonne des centres, l’affectation des groupes, le pipeline d’évaluation, les notebooks et les tableaux reproductibles.',
+  'projects.kmeans.outcome':
+    'Les tableaux par jeu de données et agrégés rendent directement visibles les compromis entre qualité et coût de calcul.',
   'projects.lz78.title': 'Compression LZ78',
   'projects.lz78.summary':
-    'Une implémentation Python de la compression par dictionnaire avec l’algorithme LZ78.',
+    'Une implémentation de compression de texte sans perte fondée sur l’algorithme de dictionnaire LZ78.',
+  'projects.lz78.approach':
+    'Un trie compressé stocke les séquences découvertes tandis que deux flux en ligne de commande encodent le texte en Z78 puis le reconstruisent.',
+  'projects.lz78.contribution':
+    'J’ai implémenté le trie, les pipelines de compression et décompression, la validation des commandes, la gestion des sorties et le corpus de tests.',
+  'projects.lz78.outcome':
+    'Dix entrées textuelles représentatives et un rapport documentent le comportement aller-retour et les choix d’implémentation.',
   'projects.sourceLink': 'Voir le code',
   'capabilities.eyebrow': 'Compétences',
   'capabilities.title': 'Des outils en contexte, sans barres de progression.',

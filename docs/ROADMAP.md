@@ -131,19 +131,19 @@ may be invented.
   outcome.
 - Preferred public contact channel: LinkedIn, professional email, or both.
 - Whether a downloadable PDF résumé belongs in the first release.
-- Final summaries and representative evidence for the four public showcase
-  repositories.
+- Native or professional review of the French catalog before public release.
 
 ## 4. Curated project showcase
 
 Project selection is editorial and must not follow GitHub update time, stars, or
-API order. The initial showcase is fixed to these five projects:
+API order. The initial showcase is fixed to these six projects:
 
 1. Jig Solver.
-2. Simplex.
-3. Pokémon Base.
-4. Greedy K-means.
-5. LZ78 Compression.
+2. Planner.
+3. Simplex.
+4. Pokémon Base.
+5. Greedy K-means.
+6. LZ78 Compression.
 
 The GitHub account may be reorganized independently. Removing unrelated public
 repositories must not change portfolio order or copy.
@@ -190,14 +190,39 @@ repositories must not change portfolio order or copy.
 - The optional secondary visual for a future case-study view is
   `../../ufmg/jig-solver/apps/web/public/docs/assistant-borders.png`.
 
-### 4.2 Public repositories
+### 4.2 Planner — private financial assistant
 
-| Display name | Repository | Known focus | Required content before release |
+#### Verified facts
+
+- Source repository and application: private; the portfolio must not link to
+  either one.
+- Product purpose: an installable personal-finance dashboard for recurring
+  expenses, income, cash flow, debts, financing scenarios, goals, reports, and
+  read-only AI guidance.
+- Web stack: Next.js 16, React 19, TypeScript, Tailwind CSS 4, React Hook Form,
+  Zod, Recharts, jsPDF, and static export/PWA delivery.
+- Platform stack: Firebase Authentication, Firestore, callable Firebase
+  Functions, and Secret Manager.
+- Assistant architecture: provider-neutral BYOK integration with bounded,
+  deterministic financial summaries; stored credentials are protected with
+  AES-256-GCM rather than exposed to the browser or model context.
+
+#### Portfolio treatment
+
+- Label: **Private project**.
+- Describe the problem, architecture, Lucas's end-to-end contribution, and the
+  integrated product result without exposing private URLs, identifiers,
+  credentials, screenshots, or internal operational details.
+- Use technology names only when confirmed by the local source.
+
+### 4.3 Public repositories
+
+| Display name | Repository | Known focus | Published evidence |
 |---|---|---|---|
-| Simplex | [`simplex`](https://github.com/LucasPMM/simplex) | Python | Problem, academic context, algorithm, and result |
-| Pokémon Base | [`Pokemon-Base`](https://github.com/LucasPMM/Pokemon-Base) | TypeScript | Product goal, architecture, contribution, and screenshot |
-| Greedy K-means | [`greedy-kmeans`](https://github.com/LucasPMM/greedy-kmeans) | Jupyter/Python | Experiment question, method, result, and visualization |
-| LZ78 Compression | [`lz78-compression`](https://github.com/LucasPMM/lz78-compression) | Python | Algorithm scope, implementation choices, and learning outcome |
+| Simplex | [`simplex`](https://github.com/LucasPMM/simplex) | Python | Two-phase tableau, Bland's rule, certificates, and fixture coverage |
+| Pokémon Base | [`Pokemon-Base`](https://github.com/LucasPMM/Pokemon-Base) | TypeScript | Routed Angular architecture, data wrapper, views, charts, and tests |
+| Greedy K-means | [`greedy-kmeans`](https://github.com/LucasPMM/greedy-kmeans) | Jupyter/Python | Ten-dataset method comparison, evaluation metrics, and result tables |
+| LZ78 Compression | [`lz78-compression`](https://github.com/LucasPMM/lz78-compression) | Python | Compressed trie, round-trip CLI flows, test corpus, and report |
 
 Each card should communicate problem, approach, Lucas's contribution, and
 result. Technology tags are supporting metadata, not the description.
@@ -258,17 +283,18 @@ owns behavior. A component used by one parent is nested under that parent's
 │   └── deploy.yml
 ├── public/
 │   ├── projects/jig-solver/solver-workspace.webp
-│   ├── avatar-fallback.webp
+│   ├── avatar-fallback.svg
 │   ├── favicon.svg
-│   └── og-cover.png
+│   ├── robots.txt
+│   └── sitemap.xml
 ├── scripts/
 │   ├── check-code-conventions.mjs
-│   └── require-pnpm.mjs
+│   ├── require-pnpm.mjs
+│   └── verify-static-build.mjs
 ├── src/
 │   ├── components/
 │   │   ├── PortfolioPage/
 │   │   │   ├── PortfolioPage.tsx
-│   │   │   ├── PortfolioPage.test.tsx
 │   │   │   ├── index.ts
 │   │   │   └── components/
 │   │   │       ├── AppHeader/
@@ -278,13 +304,14 @@ owns behavior. A component used by one parent is nested under that parent's
 │   │   │       ├── SelectedWorkSection/
 │   │   │       ├── EducationSection/
 │   │   │       ├── ProjectsSection/
-│   │   │       ├── SkillsSection/
+│   │   │       │   └── components/
+│   │   │       │       ├── ProjectCard/
+│   │   │       │       └── ProjectDetails/
+│   │   │       ├── CapabilitiesSection/
 │   │   │       └── ContactSection/
 │   │   └── ui/
 │   │       ├── ExternalLink/
-│   │       ├── Icon/
 │   │       ├── LanguageSwitcher/
-│   │       ├── ProjectCard/
 │   │       ├── SectionHeading/
 │   │       └── ThemeSwitcher/
 │   ├── content/
@@ -293,10 +320,10 @@ owns behavior. A component used by one parent is nested under that parent's
 │   │   ├── profile.ts
 │   │   └── projects.ts
 │   ├── lib/
-│   │   ├── github/avatar.ts
 │   │   ├── i18n/
 │   │   │   ├── catalog.ts
-│   │   │   ├── translations.json
+│   │   │   ├── i18n.ts
+│   │   │   ├── locale.ts
 │   │   │   ├── index.ts
 │   │   │   └── components/I18nProvider/
 │   │   └── theme/
@@ -308,7 +335,8 @@ owns behavior. A component used by one parent is nested under that parent's
 │   │   ├── components.css
 │   │   └── tokens.css
 │   ├── App.tsx
-│   └── main.tsx
+│   ├── main.tsx
+│   └── prerender.tsx
 ├── AGENTS.md
 ├── biome.json
 ├── commitlint.config.mjs
@@ -385,8 +413,9 @@ and Ionic foundation of the web/mobile career.
 
 - A large Jig Solver case-study card with the real solver screenshot and a link
   to the public application.
-- Four smaller cards for Simplex, Pokémon Base, Greedy K-means, and LZ78
-  Compression.
+- A private-project card for Planner, with no product or source link.
+- Four public-repository cards for Simplex, Pokémon Base, Greedy K-means, and
+  LZ78 Compression.
 - Never show a GitHub link for the private Jig Solver repository.
 - If a public repository is removed during GitHub cleanup, either preserve a
   stable public case-study URL or remove its card intentionally. Do not leave a
@@ -438,10 +467,12 @@ Group capabilities by context; do not use percentage bars:
 │ ┌────────────────────── JIG SOLVER ────────────────────────────────┐ │
 │ │ product + architecture + real solver screenshot + public link   │ │
 │ └──────────────────────────────────────────────────────────────────┘ │
-│ ┌──── Simplex ────┐ ┌── Pokémon Base ──┐ ┌─ Greedy K-means ─────┐ │
-│ └─────────────────┘ └───────────────────┘ └──────────────────────┘ │
-│ ┌──────────────────────── LZ78 Compression ───────────────────────┐ │
-│ └─────────────────────────────────────────────────────────────────┘ │
+│ ┌──── Planner ────┐ ┌──── Simplex ─────┐                           │
+│ └─────────────────┘ └───────────────────┘                           │
+│ ┌─ Pokémon Base ─┐ ┌─ Greedy K-means ─┐                           │
+│ └─────────────────┘ └───────────────────┘                           │
+│ ┌─ LZ78 Compression ───────────────────┐                           │
+│ └───────────────────────────────────────┘                           │
 ├──────────────────────────────────────────────────────────────────────┤
 │ Skills · Languages · Selected certification                          │
 ├──────────────────────────────────────────────────────────────────────┤
@@ -472,7 +503,7 @@ Group capabilities by context; do not use percentage bars:
 │ [real solver image]      │
 │ product + architecture   │
 ├──────────────────────────┤
-│ four project cards       │
+│ five supporting cards    │
 │ one per row              │
 ├──────────────────────────┤
 │ Skills · Languages       │
@@ -580,7 +611,7 @@ Use the stable username endpoint for the profile image:
 />
 ```
 
-If the request fails, replace it once with `/avatar-fallback.webp`. Avoid an
+If the request fails, replace it once with `/avatar-fallback.svg`. Avoid an
 error loop and reserve dimensions to prevent layout shift.
 
 Project content remains local and curated. Optional GitHub metadata enrichment
@@ -639,22 +670,24 @@ structured, and unnecessary personal data is excluded.
 **Exit:** every control and content section works in three languages and two
 themes, including missing/unsupported browser preference paths.
 
-### Phase 4 — deeper career and project evidence (P1, one day)
+### Phase 4 — deeper career and project evidence (P1) — complete
 
-- Enrich the published ABILITYA and Pluritech timeline with additional
-  nonconfidential evidence.
-- Deepen the five fixed showcase projects beyond their initial summaries.
+- Publish the confirmed ABILITYA and Pluritech evidence while retaining the
+  remaining nonconfidential metric gaps for a later content update.
+- Deepen the six fixed showcase projects beyond their initial summaries.
 - Preserve the Cagliari and Role Vectors evidence cards and verify their public
   links during release checks.
 - Build the Jig Solver feature card with its public URL, verified architecture,
   private-source treatment, and optimized real screenshot.
+- Add Planner as a private financial-assistant project using only stack and
+  product facts verified in the local repository; expose no private link.
 - Add concise evidence-based summaries for the four public repositories.
-- Add optional build-time GitHub metadata without making it critical.
+- Keep optional build-time GitHub metadata out of the critical rendering path.
 
 **Exit:** each project explains problem, approach, contribution, and result;
 private links and invented metrics are absent.
 
-### Phase 5 — quality, SEO, and performance (P0, one day)
+### Phase 5 — quality, SEO, and performance (P0) — complete
 
 - Add localized Open Graph metadata, favicon, canonical URL, sitemap, and
   `robots.txt`.
@@ -667,6 +700,17 @@ private links and invented metrics are absent.
 
 **Exit:** `pnpm check`, production build, browser tests, and accessibility
 review pass.
+
+Completion evidence on September 11, 2026:
+
+- The production build prerenders the English fallback page before hydration
+  and passes the static-output verification script.
+- The Chromium suite passes in desktop and mobile projects, covering Axe,
+  locales and metadata, theme persistence, avatar resilience, verified public
+  links, private Planner link isolation, responsive overflow, keyboard entry,
+  reduced motion, and 200 percent text sizing.
+- Lighthouse mobile scores: Performance 98, Accessibility 100, Best Practices
+  100, and SEO 100. Desktop scores 100 in all four categories.
 
 ### Phase 6 — rename and deploy (P0, half day)
 

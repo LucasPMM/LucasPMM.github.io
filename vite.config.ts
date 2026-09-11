@@ -4,10 +4,29 @@ import { defineConfig } from 'vite'
 
 export default defineConfig({
   base: process.env.VITE_BASE_PATH ?? '/',
-  plugins: [preact()],
+  plugins: [
+    preact({
+      prerender: {
+        enabled: true,
+        renderTarget: '#app',
+        prerenderScript: fileURLToPath(new URL('./src/prerender.tsx', import.meta.url)),
+        previewMiddlewareEnabled: true,
+      },
+    }),
+  ],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
+    },
+  },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'preact-runtime': ['preact', 'preact/hooks', 'preact/jsx-runtime'],
+          'ssr-renderer': ['preact-render-to-string'],
+        },
+      },
     },
   },
   test: {
