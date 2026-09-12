@@ -3,8 +3,9 @@
 ## Scope and source of truth
 
 - These instructions apply to every coding agent working in this repository.
-- Read `docs/ENGINEERING_CONVENTIONS.md`, `docs/DESIGN.md`, and the relevant
-  roadmap phase before implementation.
+- Read this file and `README.md` before making changes.
+- Treat the implementation, tests, package scripts, and configuration files as
+  the source of truth. `src/styles/tokens.css` owns visual tokens.
 - Keep implementation, tests, and documentation synchronized in the same
   change.
 - Read the nearest nested `AGENTS.md` before editing a scoped module. Nested
@@ -66,6 +67,18 @@
   so light and dark themes remain visually equivalent.
 - Add only purposeful transitions and always respect `prefers-reduced-motion`.
 
+## Design system
+
+- Preserve the warm editorial identity: parchment-like surfaces, Lora display
+  type, Public Sans body type, generous spacing, and rounded cards.
+- Use the semantic variables in `src/styles/tokens.css`; never duplicate raw
+  color values in components.
+- Keep ember orange as a restrained accent for primary actions and selected
+  details, with ink-colored text where needed for contrast.
+- Preserve equivalent hierarchy and contrast in light and dark themes.
+- Treat the existing CSS and browser tests as the specification for responsive
+  layout, interaction states, and reduced motion.
+
 ## Internationalization and theme
 
 - Supported locales are `en`, `pt-BR`, and `fr`, with matching catalog keys.
@@ -86,5 +99,18 @@
   fallback.
 - Keep the project showcase curated. External APIs may enrich nonessential
   metadata at build time, but the page must not depend on runtime API success.
+- Preserve the editorial project order: Jig Solver, Planner, Simplex, Pokémon
+  Base, Greedy K-means, and LZ78 Compression.
 - Never expose private repository URLs, credentials, tokens, residential
   addresses, or other unnecessary personal data in the generated site.
+- Deploy only the `dist` artifact after CI succeeds on a trusted default-branch
+  push. Keep GitHub Actions on stable major release tags and permissions at the
+  minimum required level.
+
+## Documentation maintenance
+
+- Keep `README.md` limited to the current product, setup, validation,
+  deployment, and genuinely useful maintenance notes.
+- Do not retain completed roadmaps, migration tutorials, or generated design
+  references after their rules have moved into code or this file; Git history
+  preserves that context.

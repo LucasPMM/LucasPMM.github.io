@@ -5,6 +5,7 @@ const localeCases = [
   {
     locale: 'en',
     languageLabel: 'Language',
+    languageOption: 'English',
     experienceHeading: 'Professional experience',
     pageTitle: 'Lucas Mariz — Senior Software Engineer',
     openGraphLocale: 'en_US',
@@ -12,6 +13,7 @@ const localeCases = [
   {
     locale: 'pt-BR',
     languageLabel: 'Language',
+    languageOption: 'Português',
     experienceHeading: 'Experiência profissional',
     pageTitle: 'Lucas Mariz — Engenheiro de Software Sênior',
     openGraphLocale: 'pt_BR',
@@ -19,6 +21,7 @@ const localeCases = [
   {
     locale: 'fr',
     languageLabel: 'Language',
+    languageOption: 'Français',
     experienceHeading: 'Expérience professionnelle',
     pageTitle: 'Lucas Mariz — Ingénieur logiciel senior',
     openGraphLocale: 'fr_FR',
@@ -47,26 +50,43 @@ test('uses browser language and color-scheme defaults on the first visit', async
   await expect(page.locator('html')).toHaveAttribute('lang', 'pt-BR')
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark')
   await expect(page.getByRole('heading', { name: 'Experiência profissional' })).toBeVisible()
+  await expect(page.getByRole('combobox', { name: 'Idioma: Português' })).toHaveAttribute(
+    'data-value',
+    'pt-BR',
+  )
+  await expect(page.getByRole('combobox', { name: 'Tema: Sistema' })).toHaveAttribute(
+    'data-value',
+    'auto',
+  )
+  await page.getByRole('combobox', { name: 'Idioma: Português' }).click()
+  await expect(page.getByRole('option', { name: 'Português' })).toHaveAttribute(
+    'aria-selected',
+    'true',
+  )
   await context.close()
 })
 
-localeCases.forEach(({ locale, languageLabel, experienceHeading, pageTitle, openGraphLocale }) => {
-  test(`synchronizes content and metadata for ${locale}`, async ({ page }) => {
-    await page.goto('/')
-    await page.getByLabel(languageLabel).selectOption(locale)
-    await expect(page.getByRole('heading', { name: experienceHeading })).toBeVisible()
-    await expect(page.locator('html')).toHaveAttribute('lang', locale)
-    await expect(page).toHaveTitle(pageTitle)
-    await expect(page.locator('meta[property="og:locale"]')).toHaveAttribute(
-      'content',
-      openGraphLocale,
-    )
-  })
-})
+localeCases.forEach(
+  ({ locale, languageLabel, languageOption, experienceHeading, pageTitle, openGraphLocale }) => {
+    test(`synchronizes content and metadata for ${locale}`, async ({ page }) => {
+      await page.goto('/')
+      await page.getByRole('combobox', { name: new RegExp(`${languageLabel}:`) }).click()
+      await page.getByRole('option', { name: languageOption }).click()
+      await expect(page.getByRole('heading', { name: experienceHeading })).toBeVisible()
+      await expect(page.locator('html')).toHaveAttribute('lang', locale)
+      await expect(page).toHaveTitle(pageTitle)
+      await expect(page.locator('meta[property="og:locale"]')).toHaveAttribute(
+        'content',
+        openGraphLocale,
+      )
+    })
+  },
+)
 
 test('persists an explicit dark theme', async ({ page }) => {
   await page.goto('/')
-  await page.getByLabel('Theme').selectOption('dark')
+  await page.getByRole('combobox', { name: 'Theme: System' }).click()
+  await page.getByRole('option', { name: 'Dark' }).click()
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark')
   await page.reload()
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark')

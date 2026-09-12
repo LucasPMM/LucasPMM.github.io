@@ -4,7 +4,7 @@ A small, static personal portfolio for GitHub Pages. It presents Lucas Mariz's
 professional experience, academic path, selected production work, research, and
 projects in English, Brazilian Portuguese, and French.
 
-Target production URL: [https://lucaspmm.github.io/](https://lucaspmm.github.io/)
+Production: [https://lucaspmm.github.io/](https://lucaspmm.github.io/)
 
 The curated showcase includes Jig Solver, the private Planner financial
 assistant, Simplex, Pokémon Base, Greedy K-means, and LZ78 Compression. Private
@@ -14,7 +14,7 @@ projects are described without exposing source or application links.
 
 - Preact, TypeScript, and Vite
 - i18next with typed, key-parity translation catalogs
-- Native CSS based on the tokens in `docs/DESIGN.md`
+- Native CSS with semantic light and dark theme tokens
 - Biome for linting and formatting
 - Vitest and Testing Library for behavior tests
 - Playwright for responsive browser checks
@@ -69,37 +69,33 @@ base path.
 The production check also verifies canonical metadata, the sitemap,
 `robots.txt`, and representative prerendered content.
 
-## GitHub Pages activation
+## Deployment
 
 The deployment workflow runs only after the `CI` workflow succeeds for a push
 to `master` or `main`. It rebuilds the exact verified revision and publishes
-only `dist/`.
+only `dist/` to the GitHub Pages user site.
 
-To activate the final site:
+The modernization roadmap was completed on September 11, 2026. The repository
+is named `LucasPMM.github.io`, uses `/` as its Vite base path, and the production
+site is live at the URL above.
 
-1. Rename `LucasPMM/Curriculum` to `LucasPMM/LucasPMM.github.io` under
-   **Settings → General**.
-2. Under **Settings → Pages**, change the publishing source from the legacy
-   branch configuration to **GitHub Actions**.
-3. Update the local remote:
+## Optional content maintenance
 
-   ```bash
-   git remote set-url origin git@github.com:LucasPMM/LucasPMM.github.io.git
-   ```
+These are editorial enhancements rather than release blockers:
 
-4. Merge the modernization branch into the default branch. A successful CI run
-   will trigger the deployment workflow automatically.
-5. Set the repository description, Website field, GitHub profile Website, and
-   LinkedIn link to `https://lucaspmm.github.io/`.
+- Have the French catalog reviewed by a native or professional speaker.
+- Add the exact Cambridge certificate name, year, and credential URL if it
+  should be public.
+- Add nonconfidential quantitative outcomes for ABILITYA or Pluritech when
+  reliable evidence is available.
+- Add a professional email or downloadable résumé only if a new public contact
+  channel is desired.
+- Recheck public project links whenever the GitHub profile is reorganized.
 
 ## Content and implementation rules
 
-Read these files before making changes:
-
-- `AGENTS.md`
-- `docs/ENGINEERING_CONVENTIONS.md`
-- `docs/DESIGN.md`
-- `docs/ROADMAP.md`
+Read `AGENTS.md` before making changes. It is the repository's maintained
+engineering and design rule set.
 
 Source code, comments, tests, and documentation are written in English. All
 visitor-facing copy belongs in the three-language catalog. Do not commit changes
